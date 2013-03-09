@@ -14,6 +14,9 @@ group :production do
   gem 'thin'
 end
 
+gem 'devise'
+gem 'github_api'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
