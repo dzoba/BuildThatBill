@@ -11,3 +11,8 @@
  *= require_self
  *= require_tree .
  */
+
+
+#myCarousel h1 {
+	color: white;
+}

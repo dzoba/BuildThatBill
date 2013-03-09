@@ -3,6 +3,17 @@ BuildThatBill::Application.routes.draw do
 
 
   root :to => 'home#index'
+
+
+  resources :interestedemails do
+    member do
+      post 'recordemail'
+    end
+  end
+
+  match 'about' => 'home#about'
+  match 'contact' => 'home#contact'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
