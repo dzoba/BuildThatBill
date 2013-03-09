@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130309203847) do
+ActiveRecord::Schema.define(:version => 20130309211713) do
 
   create_table "bill_atoms", :force => true do |t|
     t.text     "body"
@@ -36,6 +36,23 @@ ActiveRecord::Schema.define(:version => 20130309203847) do
 
   add_index "bills_problems", ["bill_id", "problem_id"], :name => "index_bills_problems_on_bill_id_and_problem_id"
   add_index "bills_problems", ["problem_id", "bill_id"], :name => "index_bills_problems_on_problem_id_and_bill_id"
+
+  create_table "comments", :force => true do |t|
+    t.integer  "commentable_id",   :default => 0
+    t.string   "commentable_type", :default => ""
+    t.string   "title",            :default => ""
+    t.text     "body",             :default => ""
+    t.string   "subject",          :default => ""
+    t.integer  "user_id",          :default => 0,  :null => false
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
+  add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "interested_emails", :force => true do |t|
     t.string   "email"
