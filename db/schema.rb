@@ -46,6 +46,9 @@ ActiveRecord::Schema.define(:version => 20130309193529) do
     t.text     "body"
     t.integer  "number"
     t.integer  "user_id"
+
+  create_table "interested_emails", :force => true do |t|
+    t.string   "email"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
