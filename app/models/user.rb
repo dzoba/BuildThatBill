@@ -10,4 +10,13 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   has_many :problems
   has_many :bills
+  
+
+  def fork_bill(bill_id)
+    b = Bill.find(bill_id)
+    new_bill = b.dup
+    new_bill.parent = b
+    self.bills << new_bill
+  end
+
 end
