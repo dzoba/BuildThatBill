@@ -13,10 +13,12 @@ group :production do
   gem 'pg'
   gem 'thin'
 end
+gem "twitter-bootstrap-rails"
 
 gem 'devise'
 gem 'github_api'
 gem 'paper_trail'
+gem 'ancestry'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130309171730) do
+ActiveRecord::Schema.define(:version => 20130309192939) do
 
   create_table "bill_atoms", :force => true do |t|
     t.text     "body"
