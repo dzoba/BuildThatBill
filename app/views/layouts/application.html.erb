@@ -25,10 +25,11 @@ typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var
 e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
 mixpanel.init("2bc4c517d3fd59459d7a6a0bf3ca55f9");</script><!-- end Mixpanel -->
 
-
+<script>
 $(document).ready(function() {
   mixpanel.track("Page Visited	");
 });
+</script>
 </head>
 <body>
 	
@@ -36,4 +37,5 @@ $(document).ready(function() {
 <%= yield %>
 
 </body>
+<div style="float:right; margin-right: 100px"><a href="http://mixpanel.com/f/partner"><img src="http://mixpanel.com/site_media/images/partner/badge_blue.png" alt="Mobile Analytics" /></a></div>
 </html>
