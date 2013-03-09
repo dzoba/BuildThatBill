@@ -1,31 +1,63 @@
 <%- model_class = Bill -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
-</div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
-  <dd><%= @bill.title %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:tree) %>:</strong></dt>
-  <dd><%= @bill.tree %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @bill.user_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:body) %>:</strong></dt>
-  <dd><%= @bill.body %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:problem_id) %>:</strong></dt>
-  <dd><%= @bill.problem_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:ancestry) %>:</strong></dt>
-  <dd><%= @bill.ancestry %></dd>
-</dl>
+<div class="row">
+  <div class="span8">
 
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              bills_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_bill_path(@bill), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              bill_path(@bill),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+    <div class="page-header">
+      <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+    </div>
+
+    <dl class="dl-horizontal">
+      <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
+      <dd><%= @bill.title %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
+      <dd><%= @bill.user_id %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:body) %>:</strong></dt>
+      <dd><%= @bill.body %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:problem_id) %>:</strong></dt>
+      <dd><%= @bill.problem_id %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:ancestry) %>:</strong></dt>
+      <dd><%= @bill.ancestry %></dd>
+    </dl>
+
+    <div class="form-actions">
+      <%= link_to t('.back', :default => t("helpers.links.back")),
+      bills_path, :class => 'btn'  %>
+      <%= link_to t('.edit', :default => t("helpers.links.edit")),
+      edit_bill_path(@bill), :class => 'btn' %>
+      <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+      bill_path(@bill),
+      :method => 'delete',
+      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+      :class => 'btn btn-danger' %>
+    </div>
+
+
+  </div>
+  <div class="span4">
+    <table class="table">
+      <th>Issues</th>
+    </table>
+    <table class="table">
+      <th>Based on</th>
+      <tbody>
+	<%= @bill.next_version if @bill.next_version %>
+	<% unless @bill.previous_version.nil? %>
+	<tr><td><%= link_to @bill.previous_version.title, bill_path(@bill.previous_version) %></td></tr> 	
+	<% end %>
+	<% unless @bill.parent.nil? %>
+	<tr><td><%= link_to @bill.parent.title, bill_path(@bill.parent) %></td></tr> 	
+	<% end %>
+
+      </tbody>
+    </table>
+    <table class="table">
+      <th>Revisions</th>
+      <% @bill.children.each do |revision| %>
+      <tr><td><%= link_to revision.title, bill_path(revision) %></td></tr> 
+      <% end %>
+
+    </table>
+
+  </div>
 </div>

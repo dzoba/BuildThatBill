@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130309193529) do
+ActiveRecord::Schema.define(:version => 20130309203847) do
 
   create_table "bill_atoms", :force => true do |t|
     t.text     "body"
@@ -28,6 +28,20 @@ ActiveRecord::Schema.define(:version => 20130309193529) do
 
 # Could not dump table "bills" because of following StandardError
 #   Unknown type 'reference' for column 'problem_id'
+
+  create_table "bills_problems", :id => false, :force => true do |t|
+    t.integer "problem_id"
+    t.integer "bill_id"
+  end
+
+  add_index "bills_problems", ["bill_id", "problem_id"], :name => "index_bills_problems_on_bill_id_and_problem_id"
+  add_index "bills_problems", ["problem_id", "bill_id"], :name => "index_bills_problems_on_problem_id_and_bill_id"
+
+  create_table "interested_emails", :force => true do |t|
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "problem_comments", :force => true do |t|
     t.text     "body"
@@ -46,9 +60,6 @@ ActiveRecord::Schema.define(:version => 20130309193529) do
     t.text     "body"
     t.integer  "number"
     t.integer  "user_id"
-
-  create_table "interested_emails", :force => true do |t|
-    t.string   "email"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
