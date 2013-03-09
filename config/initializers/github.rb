@@ -4,3 +4,5 @@
   config.basic_auth  = ENV['GITHUB_AUTH']
   config.ssl         = {:verify => false}
 end
+
+@repo = @github.repos 'BuildThatBillData'
