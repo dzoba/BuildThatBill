@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  body: MyText
+  blob: MyString
+  user: 
+  bill: 
+
+two:
+  body: MyText
+  blob: MyString
+  user: 
+  bill: 

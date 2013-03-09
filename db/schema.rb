@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130309153959) do
+ActiveRecord::Schema.define(:version => 20130309154114) do
+
+  create_table "bill_atoms", :force => true do |t|
+    t.text     "body"
+    t.string   "blob"
+    t.integer  "user_id"
+    t.integer  "bill_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "bill_atoms", ["bill_id"], :name => "index_bill_atoms_on_bill_id"
+  add_index "bill_atoms", ["user_id"], :name => "index_bill_atoms_on_user_id"
 
   create_table "bills", :force => true do |t|
     t.string   "title"
