@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130309192939) do
+ActiveRecord::Schema.define(:version => 20130309193529) do
 
   create_table "bill_atoms", :force => true do |t|
     t.text     "body"
@@ -49,6 +49,14 @@ ActiveRecord::Schema.define(:version => 20130309192939) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "problems_users", :id => false, :force => true do |t|
+    t.integer "problem_id"
+    t.integer "bill_id"
+  end
+
+  add_index "problems_users", ["bill_id", "problem_id"], :name => "index_problems_users_on_bill_id_and_problem_id"
+  add_index "problems_users", ["problem_id", "bill_id"], :name => "index_problems_users_on_problem_id_and_bill_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
