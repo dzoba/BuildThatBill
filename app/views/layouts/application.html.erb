@@ -25,9 +25,13 @@ typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var
 e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
 mixpanel.init("2bc4c517d3fd59459d7a6a0bf3ca55f9");</script><!-- end Mixpanel -->
 
+
+$(document).ready(function() {
+  mixpanel.track("Page Visited	");
+});
 </head>
 <body>
-	mixpanel.track("Page Visited");
+	
 
 <%= yield %>
 
