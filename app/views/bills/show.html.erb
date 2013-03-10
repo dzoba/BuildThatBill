@@ -38,7 +38,15 @@
 	<% @bill.root.problems.each do |problem| %>
 	<tr><td><%= link_to problem.title, problem_path(problem) %></td></tr>
 	<% end %>
+	<tr><td style="border-top:none;"><%= form_tag("/bills/#{@bill.id}", :method => :put) do %>
+	<div class="control-group">
 
+	  <div class="controls">
+	    <%= text_field_tag :problem %>
+	  </div>
+	    <%= submit_tag nil, :class => 'btn btn-primary', :value => "Link to issue" %>
+	</div>
+	<% end %></td></tr>
       </tbody>
     </table>
     <table class="table">

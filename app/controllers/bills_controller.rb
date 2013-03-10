@@ -34,9 +34,7 @@ class BillsController < ApplicationController
 
   # GET /bills/1/edit
   def edit
-    old_bill = Bill.find(params[:id])
-    new_bill = current_user.fork_bill(old_bill.id)
-    @bill = new_bill
+    @bill = Bill.find(params[:id])
   end
 
   # POST /bills
@@ -58,7 +56,16 @@ class BillsController < ApplicationController
   # PUT /bills/1
   # PUT /bills/1.json
   def update
-    @bill = Bill.find(params[:id])
+    if params.has_key?(:problem)
+      problem = Problem.find(params[:problem])
+      unless problem.nil?
+        @bill.root.problems << problem
+      end
+    else
+      old_bill = Bill.find(params[:id])
+      new_bill = current_user.fork_bill(old_bill.id)
+      @bill = new_bill
+    end
 
     respond_to do |format|
       if @bill.update_attributes(params[:bill])
