@@ -35,9 +35,10 @@
     <table class="table">
       <th>Issues Addressed</th>
       <tbody>
-	<% @bill.problems.each do |problem| %>
+	<% @bill.root.problems.each do |problem| %>
 	<tr><td><%= link_to problem.title, problem_path(problem) %></td></tr>
 	<% end %>
+
       </tbody>
     </table>
     <table class="table">

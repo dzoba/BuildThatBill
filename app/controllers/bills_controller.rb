@@ -34,7 +34,9 @@ class BillsController < ApplicationController
 
   # GET /bills/1/edit
   def edit
-    @bill = Bill.find(params[:id])
+    old_bill = Bill.find(params[:id])
+    new_bill = current_user.fork_bill(old_bill.id)
+    @bill = new_bill
   end
 
   # POST /bills
