@@ -43,13 +43,23 @@
         ================================================== -->  
 
         <div id="signupin" class="span3" style="background-color:height:100%">
-          <h3>Get More Info</h3>
+	  <h2>Sign up</h2>
 
-          We're rapidly developing the software to drive Build That Bill.  
-          <br /><br />
-          Once everything is set up we will send you an email announcing our grand opening.
-          <div id="beta-info-input">
-          <input type="email" class="interested-email" style="margin-top:6px;" placeholder="Email address" /> <input type="button" id="request-invite" class="btn btn-primary" value="Stay updated" style="margin-top:-3px;" />   <br />
+	  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+	  <%= devise_error_messages! %>
+
+	  <div><%= f.label :email %><br />
+	    <%= f.email_field :email, :autofocus => true %></div>
+
+	  <div><%= f.label :password %><br />
+	    <%= f.password_field :password %></div>
+
+	  <div><%= f.label :password_confirmation %><br />
+	    <%= f.password_field :password_confirmation %></div>
+
+	  <div><%= f.submit "Sign up", :class => "btn" %> <%= link_to "Sign in", new_user_session_path %></div>
+	  <% end %>
+
         </div>
         </div>
 
