@@ -1,0 +1,9 @@
+<div class="comment">
+<div class="content">
+    <%= comment.content %>
+  </div>
+  <div class="actions">
+    <%= link_to "Reply", new_comment_path(:parent_id => comment) %> |
+    <%= link_to "Destroy", comment, :confirm => "Are you sure?", :method => :delete %>
+  </div>
+</div>

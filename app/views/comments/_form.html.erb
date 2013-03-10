@@ -1,0 +1,9 @@
+<%= form_for(:comment, :url => comments_path(problem.class.to_s.underscore, problem.id)) do |f| %>
+  <%= f.error_messages %>
+  <%= f.hidden_field :parent_id %>
+  <p>
+    <%= f.label :content, "New Comment" %><br />
+    <%= f.text_area :content, :rows => 8 %>
+  </p>
+  <p><%= f.submit "Post Comment" %></p>
+<% end %>

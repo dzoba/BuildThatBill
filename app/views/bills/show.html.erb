@@ -14,10 +14,6 @@
       <dd><%= @bill.user_id %></dd>
       <dt><strong><%= model_class.human_attribute_name(:body) %>:</strong></dt>
       <dd><%= @bill.body %></dd>
-      <dt><strong><%= model_class.human_attribute_name(:problem_id) %>:</strong></dt>
-      <dd><%= @bill.problem_id %></dd>
-      <dt><strong><%= model_class.human_attribute_name(:ancestry) %>:</strong></dt>
-      <dd><%= @bill.ancestry %></dd>
     </dl>
 
     <div class="form-actions">
@@ -46,14 +42,9 @@
     <table class="table">
       <th>Based on</th>
       <tbody>
-	<%= @bill.next_version if @bill.next_version %>
-	<% unless @bill.previous_version.nil? %>
-	<tr><td><%= link_to @bill.previous_version.title, bill_path(@bill.previous_version) %></td></tr> 	
-	<% end %>
 	<% unless @bill.parent.nil? %>
 	<tr><td><%= link_to @bill.parent.title, bill_path(@bill.parent) %></td></tr> 	
 	<% end %>
-
       </tbody>
     </table>
     <table class="table">
