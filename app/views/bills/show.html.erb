@@ -10,10 +10,11 @@
     <dl class="dl-horizontal">
       <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
       <dd><%= @bill.title %></dd>
-      <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-      <dd><%= @bill.user_id %></dd>
-      <dt><strong><%= model_class.human_attribute_name(:body) %>:</strong></dt>
-      <dd><%= @bill.body %></dd>
+      <dt><strong>Proposed by:</strong></dt>
+      <dd><%= @bill.user.email %></dd>
+      <dt><strong></strong></dt>
+      <br/>
+      <dd><%= markdown(@bill.body) %></dd>
     </dl>
 
     <div class="form-actions">

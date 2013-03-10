@@ -20,6 +20,9 @@ gem 'github_api'
 gem 'paper_trail'
 gem 'ancestry'
 gem 'acts_as_commentable_with_threading'
+gem 'redcarpet'
+gem 'albino'
+gem 'nokogiri'
 
 # Gems used only for assets and not required
 # in production environments by default.
