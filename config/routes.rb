@@ -13,6 +13,8 @@ BuildThatBill::Application.routes.draw do
     end
   end
 
+  match 'problems_to_link/:id' => 'problems#link'
+
   match 'about' => 'home#about'
   match 'contact' => 'home#contact'
 

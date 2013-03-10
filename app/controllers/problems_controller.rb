@@ -21,6 +21,16 @@ class ProblemsController < ApplicationController
     end
   end
 
+  def link
+    @problems = Problem.all
+    @bill_id = params[:id]
+    @bill = Bill.find(params[:id])
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @problems }
+    end
+  end
+
   # GET /problems/new
   # GET /problems/new.json
   def new
