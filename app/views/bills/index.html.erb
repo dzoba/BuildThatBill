@@ -5,13 +5,9 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:title) %></th>
-      <th><%= model_class.human_attribute_name(:tree) %></th>
       <th><%= model_class.human_attribute_name(:user_id) %></th>
       <th><%= model_class.human_attribute_name(:body) %></th>
-      <th><%= model_class.human_attribute_name(:problem_id) %></th>
-      <th><%= model_class.human_attribute_name(:ancestry) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -19,13 +15,9 @@
   <tbody>
     <% @bills.each do |bill| %>
       <tr>
-        <td><%= link_to bill.id, bill_path(bill) %></td>
-        <td><%= bill.title %></td>
-        <td><%= bill.tree %></td>
+        <td><%= link_to bill.title, bill_path(bill) %></td>
         <td><%= bill.user_id %></td>
         <td><%= bill.body %></td>
-        <td><%= bill.problem_id %></td>
-        <td><%= bill.ancestry %></td>
         <td><%=l bill.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
