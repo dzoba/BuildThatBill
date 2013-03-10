@@ -57,6 +57,7 @@ class BillsController < ApplicationController
   # PUT /bills/1.json
   def update
     if params.has_key?(:problem)
+      @bill = Bill.new(params[:bill])
       problem = Problem.find(params[:problem])
       unless problem.nil?
         @bill.root.problems << problem
