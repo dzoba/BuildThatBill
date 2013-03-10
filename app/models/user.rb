@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
     new_bill = b.dup
     new_bill.parent = b
     self.bills << new_bill
+    new_bill
   end
 
 end

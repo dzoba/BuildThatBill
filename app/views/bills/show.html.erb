@@ -10,10 +10,11 @@
     <dl class="dl-horizontal">
       <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
       <dd><%= @bill.title %></dd>
-      <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-      <dd><%= @bill.user_id %></dd>
-      <dt><strong><%= model_class.human_attribute_name(:body) %>:</strong></dt>
-      <dd><%= @bill.body %></dd>
+      <dt><strong>Proposed by:</strong></dt>
+      <dd><%= @bill.user.email %></dd>
+      <dt><strong></strong></dt>
+      <br/>
+      <dd><%= markdown(@bill.body) %></dd>
     </dl>
 
     <div class="form-actions">
@@ -34,23 +35,25 @@
     <table class="table">
       <th>Issues Addressed</th>
       <tbody>
-	<% @bill.problems.each do |problem| %>
+	<% @bill.root.problems.each do |problem| %>
 	<tr><td><%= link_to problem.title, problem_path(problem) %></td></tr>
 	<% end %>
+
       </tbody>
     </table>
     <table class="table">
       <th>Based on</th>
-      <tbody>
 	<% unless @bill.parent.nil? %>
 	<tr><td><%= link_to @bill.parent.title, bill_path(@bill.parent) %></td></tr> 	
 	<% end %>
-      </tbody>
     </table>
     <table class="table">
-      <th>Revisions</th>
+      <th>Revisions</th><th></th>
       <% @bill.children.each do |revision| %>
-      <tr><td><%= link_to revision.title, bill_path(revision) %></td></tr> 
+      <tr>
+	<td><%= link_to revision.title, bill_path(revision) %></td>
+	<td><%= revision.user.email %></td>
+      </tr> 
       <% end %>
 
     </table>
