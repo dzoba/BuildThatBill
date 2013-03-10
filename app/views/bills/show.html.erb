@@ -43,16 +43,17 @@
     </table>
     <table class="table">
       <th>Based on</th>
-      <tbody>
 	<% unless @bill.parent.nil? %>
 	<tr><td><%= link_to @bill.parent.title, bill_path(@bill.parent) %></td></tr> 	
 	<% end %>
-      </tbody>
     </table>
     <table class="table">
-      <th>Revisions</th>
+      <th>Revisions</th><th></th>
       <% @bill.children.each do |revision| %>
-      <tr><td><%= link_to revision.title, bill_path(revision) %></td></tr> 
+      <tr>
+	<td><%= link_to revision.title, bill_path(revision) %></td>
+	<td><%= revision.user.email %></td>
+      </tr> 
       <% end %>
 
     </table>
